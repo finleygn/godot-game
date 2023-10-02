@@ -32,9 +32,6 @@ func _physics_process(delta):
 	else:
 		set_movement_target(position)
 		
-	if player.global_position.distance_to(position) < 4.0:
-		player.health_pool.lose_heath(1);
-	
 	if navigation_agent.is_navigation_finished():
 		return
 

@@ -22,7 +22,11 @@ func _ready():
 	$DebugOverlay.draw.add_vector(self, "velocity", 1, 4, Color(1.0,0.0,1.0, 0.4))
 	node_hit_box.disable();
 	node_attack_timer.timeout.connect(_on_attack_timer_ended);
-	
+
+func _input(event):
+	if event.is_action_pressed('attack'):
+		health_pool.lose_heath(10);
+
 func _physics_process(delta):
 	look_at_mouse();
 	handle_movement(delta);

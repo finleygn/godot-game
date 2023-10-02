@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://ng10cmg1tgma"]
+[gd_scene load_steps=47 format=3 uid="uid://ng10cmg1tgma"]
 
 [ext_resource type="PackedScene" uid="uid://kf2txuvh28ld" path="res://scenes/player.tscn" id="1_a1avi"]
 [ext_resource type="Script" path="res://src/Main.gd" id="1_f5uec"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://src/interaction/Hurtbox.gd" id="13_jc10m"]
 [ext_resource type="Material" uid="uid://b0dr41gcoh51v" path="res://materials/tree_trunk.tres" id="13_lqmsj"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="16_oi8pk"]
+[ext_resource type="PackedScene" uid="uid://jeo3ic0oqpsi" path="res://scenes/Enemy.tscn" id="17_7bxlo"]
 [ext_resource type="Shader" path="res://shaders/cel-shader-base.gdshader" id="17_i8dq3"]
 [ext_resource type="Script" path="res://src/Enemy.gd" id="18_kayto"]
 
@@ -453,3 +454,6 @@ shape = SubResource("BoxShape3D_1sy2f")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enemy"]
 mesh = SubResource("BoxMesh_sebyg")
 skeleton = NodePath("../CollisionShape3D")
+
+[node name="Enemy2" parent="." instance=ExtResource("17_7bxlo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.762075, 0, 4.63411)

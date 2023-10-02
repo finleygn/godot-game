@@ -1,26 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://cu0xxy2gyb6vh"]
+[gd_scene load_steps=2 format=3 uid="uid://cu0xxy2gyb6vh"]
 
 [ext_resource type="Script" path="res://src/gui/GUI_HealthPlayer.gd" id="1_usxvc"]
-[ext_resource type="FontFile" uid="uid://6pnlwfgk1fuy" path="res://nitrods-font.ttf" id="3_1e15l"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_61amk"]
-
-[sub_resource type="Theme" id="Theme_kllr7"]
-default_font = ExtResource("3_1e15l")
-
-[node name="HealthPlayer" type="PanelContainer"]
-offset_right = 650.0
-offset_bottom = 471.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_61amk")
+[node name="HealthPlayer" type="ColorRect"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -59.0
+offset_right = 486.0
+offset_bottom = -21.0
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
 script = ExtResource("1_usxvc")
 
-[node name="QuantityLabel" type="Label" parent="."]
-custom_minimum_size = Vector2(150, 0)
+[node name="HealthBar" type="ColorRect" parent="."]
 layout_mode = 2
-theme = SubResource("Theme_kllr7")
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_font_sizes/font_size = 33
-text = "test
-"
-vertical_alignment = 1
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 459.0
+offset_bottom = 35.0
+color = Color(0.737255, 0.196078, 0.305882, 1)
