@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://kf2txuvh28ld"]
+
+[ext_resource type="Script" path="res://src/Player.gd" id="1_m5f8l"]
+[ext_resource type="PackedScene" uid="uid://sxqm3n75o516" path="res://scenes/mushroom_guy.tscn" id="2_kit35"]
+[ext_resource type="PackedScene" path="res://scenes/debug_overlay.tscn" id="3_cjh05"]
+[ext_resource type="Script" path="res://src/interaction/Hitbox.gd" id="4_hqv8o"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecbry"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tw5l2"]
+size = Vector3(1.585, 1.24, 1.585)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_m5f8l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.00448543, 0.99999, 0, -0.99999, 0.00448543, 0, 0, 0, 1, 0, 0.254153, 0)
+shape = SubResource("CapsuleShape3D_ecbry")
+
+[node name="DebugOverlay" parent="." instance=ExtResource("3_cjh05")]
+
+[node name="PlayerModel" parent="." instance=ExtResource("2_kit35")]
+
+[node name="HitBox" type="Area3D" parent="."]
+script = ExtResource("4_hqv8o")
+
+[node name="AttackHitbox" type="CollisionShape3D" parent="HitBox"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.649518, -1.24509)
+shape = SubResource("BoxShape3D_tw5l2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="attack_animation_finished" from="PlayerModel" to="." method="_on_player_model_attack_animation_finished"]
+[connection signal="hit_register" from="HitBox" to="." method="_on_hit_box_hit_register"]

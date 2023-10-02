@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=5 format=3 uid="uid://de7f78gyh20df"]
+
+[ext_resource type="Resource" uid="uid://ch4783df12h6c" path="res://state/fungible/GoldFungible.tres" id="1_6cbad"]
+[ext_resource type="Script" path="res://src/Inventory.gd" id="1_6y23g"]
+[ext_resource type="Resource" uid="uid://datrwtabe5gg2" path="res://state/fungible/StoneFungible.tres" id="3_nffeu"]
+[ext_resource type="Resource" uid="uid://iiw5r4ov1e2n" path="res://state/fungible/WoodFungible.tres" id="4_qa2lu"]
+
+[resource]
+script = ExtResource("1_6y23g")
+gold_account = ExtResource("1_6cbad")
+wood_account = ExtResource("4_qa2lu")
+stone_account = ExtResource("3_nffeu")

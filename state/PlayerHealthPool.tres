@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="HealthPool" load_steps=2 format=3 uid="uid://1k22u7blan7y"]
+
+[ext_resource type="Script" path="res://src/HealthPool.gd" id="1_q2x7k"]
+
+[resource]
+script = ExtResource("1_q2x7k")
+maximum = 100
+current = 100

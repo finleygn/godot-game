@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://lxk5410rvfdu"]
+
+[ext_resource type="Script" path="res://src/gui/GUI_Inventory.gd" id="1_0j6xl"]
+[ext_resource type="PackedScene" uid="uid://x46akihhrjbu" path="res://src/gui/GUI_Fungible.tscn" id="2_o2e6e"]
+
+[node name="Inventory" type="PanelContainer"]
+offset_right = 121.0
+offset_bottom = 220.0
+size_flags_stretch_ratio = 2.0
+script = ExtResource("1_0j6xl")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Fungible" parent="MarginContainer/GridContainer" instance=ExtResource("2_o2e6e")]
+layout_mode = 2
+
+[node name="Fungible2" parent="MarginContainer/GridContainer" instance=ExtResource("2_o2e6e")]
+layout_mode = 2
+
+[node name="Fungible3" parent="MarginContainer/GridContainer" instance=ExtResource("2_o2e6e")]
+layout_mode = 2

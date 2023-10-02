@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://x46akihhrjbu"]
+
+[ext_resource type="Script" path="res://src/gui/GUI_Fungible.gd" id="1_la37x"]
+[ext_resource type="Texture2D" uid="uid://bt2y124oc0vnk" path="res://texture/stone.png" id="2_velkh"]
+[ext_resource type="FontFile" uid="uid://6pnlwfgk1fuy" path="res://nitrods-font.ttf" id="3_phy7o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_61amk"]
+
+[sub_resource type="Theme" id="Theme_kllr7"]
+default_font = ExtResource("3_phy7o")
+
+[node name="Fungible" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_61amk")
+script = ExtResource("1_la37x")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("2_velkh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="QuantityLabel" type="Label" parent="MarginContainer/GridContainer/MarginContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = SubResource("Theme_kllr7")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 33
+text = "104"
+vertical_alignment = 1
