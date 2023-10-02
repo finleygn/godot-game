@@ -1,12 +1,12 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bmlptlkynjqdr"]
 
 [ext_resource type="Material" uid="uid://bej0ww8ad5oyt" path="res://materials/outline.tres" id="1_14o11"]
-[ext_resource type="Shader" path="res://global_shaders/cel-shader-base.gdshader" id="2_6avr2"]
+[ext_resource type="Shader" path="res://shaders/cel-shader-base.gdshader" id="2_wh3bq"]
 
 [resource]
 render_priority = 0
 next_pass = ExtResource("1_14o11")
-shader = ExtResource("2_6avr2")
+shader = ExtResource("2_wh3bq")
 shader_parameter/emission = Color(0, 0, 0, 1)
 shader_parameter/emission_energy = 1.0
 shader_parameter/color = Color(0.517647, 0.447059, 0.333333, 1)

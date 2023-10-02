@@ -194,8 +194,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.0
 script = SubResource("GDScript_ge1bo")
 
 [node name="Skeleton3D" parent="Control/Armature" index="0"]
-bones/2/rotation = Quaternion(0.112763, 0.0198832, -0.172506, 0.978331)
-bones/4/rotation = Quaternion(0.147545, -0.109416, 0.0958118, 0.978304)
+bones/2/rotation = Quaternion(0.0889115, 0.0156775, -0.172939, 0.980786)
+bones/4/rotation = Quaternion(0.1294, -0.1199, 0.0836612, 0.980755)
 
 [node name="Body" parent="Control/Armature/Skeleton3D" index="0"]
 mesh = SubResource("ArrayMesh_i2ys7")
