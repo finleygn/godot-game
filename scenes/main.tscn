@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://ng10cmg1tgma"]
+[gd_scene load_steps=44 format=3 uid="uid://ng10cmg1tgma"]
 
 [ext_resource type="PackedScene" uid="uid://kf2txuvh28ld" path="res://scenes/player.tscn" id="1_a1avi"]
 [ext_resource type="Script" path="res://src/Main.gd" id="1_f5uec"]
@@ -14,17 +14,19 @@
 [ext_resource type="Script" path="res://src/interaction/Hurtbox.gd" id="13_jc10m"]
 [ext_resource type="Material" uid="uid://b0dr41gcoh51v" path="res://materials/tree_trunk.tres" id="13_lqmsj"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="16_oi8pk"]
-[ext_resource type="PackedScene" uid="uid://jeo3ic0oqpsi" path="res://scenes/Enemy.tscn" id="17_7bxlo"]
 [ext_resource type="Shader" path="res://shaders/cel-shader-base.gdshader" id="17_i8dq3"]
-[ext_resource type="Script" path="res://src/Enemy.gd" id="18_kayto"]
+[ext_resource type="PackedScene" uid="uid://diau0y74foed6" path="res://scenes/EnemyFrog.tscn" id="17_wpxmg"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_cofdi"]
 exposure_multiplier = 2.0
 auto_exposure_enabled = true
 auto_exposure_scale = 0.2
 dof_blur_far_enabled = true
-dof_blur_far_distance = 22.0
-dof_blur_near_distance = 15.0
+dof_blur_far_distance = 13.03
+dof_blur_far_transition = 10.0
+dof_blur_near_enabled = true
+dof_blur_near_distance = 8.0
+dof_blur_near_transition = 3.0
 dof_blur_amount = 0.05
 
 [sub_resource type="Environment" id="Environment_j2npg"]
@@ -377,25 +379,20 @@ shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1sy2f"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_sebyg"]
-
 [node name="Main" type="Node3D"]
 script = ExtResource("1_f5uec")
 
 [node name="Player" parent="." instance=ExtResource("1_a1avi")]
-transform = Transform3D(1, 0.000169275, 0.000318609, -0.000169373, 1, 0.000245365, -0.000318557, -0.000245433, 1, 0.0363326, 0.10278, 0.0191345)
+transform = Transform3D(1, 0.000169275, 0.000318609, -0.000169373, 1, 0.000245365, -0.000318557, -0.000245433, 1, 0.0363326, -0.435821, 0.0191345)
 speed = 8
 inventory = ExtResource("4_c44pm")
 health_pool = ExtResource("4_k5ueq")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
-transform = Transform3D(1, -1.74846e-07, 4.17196e-13, 1.0385e-07, 0.593953, 0.8045, -1.40664e-07, -0.8045, 0.593953, 0, 13.6188, -8.50356)
+transform = Transform3D(1, -1.74846e-07, 4.86356e-13, 1.0385e-07, 0.593953, 0.8045, -1.40664e-07, -0.8045, 0.593953, 0, 9.67111, -6.24626)
 attributes = SubResource("CameraAttributesPractical_cofdi")
-projection = 1
 current = true
-fov = 84.7922
+fov = 60.0
 size = 15.0
 script = ExtResource("2_n2my7")
 target = NodePath("../Player")
@@ -430,6 +427,7 @@ entity_count = 10
 scene = SubResource("PackedScene_2dwvv")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.552415, 0)
 navigation_mesh = SubResource("NavigationMesh_6o7lo")
 
 [node name="floor" type="StaticBody3D" parent="NavigationRegion3D"]
@@ -439,21 +437,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_mc6l1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.511933, 0)
 mesh = SubResource("PlaneMesh_xs4dr")
 surface_material_override/0 = SubResource("ShaderMaterial_t3lhp")
 
-[node name="Enemy" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.988318, 0, 0, 0, 0.988318, 0, 0, 0, 0.988318, 6.8784, 0.725711, 0)
-script = ExtResource("18_kayto")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy"]
-shape = SubResource("BoxShape3D_1sy2f")
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemy"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemy"]
-mesh = SubResource("BoxMesh_sebyg")
-skeleton = NodePath("../CollisionShape3D")
-
-[node name="Enemy2" parent="." instance=ExtResource("17_7bxlo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.762075, 0, 4.63411)
+[node name="EnemyFrog" parent="." instance=ExtResource("17_wpxmg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.74777, -0.466267, 4.16496)

@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://diau0y74foed6"]
+
+[ext_resource type="PackedScene" uid="uid://b5riolk145do0" path="res://scenes/Frog.tscn" id="1_04bwi"]
+[ext_resource type="Script" path="res://src/EnemyFrog.gd" id="1_ve05x"]
+[ext_resource type="Script" path="res://src/interaction/Hurtbox.gd" id="2_8rj1d"]
+[ext_resource type="Script" path="res://src/HealthPool.gd" id="2_nphgc"]
+
+[sub_resource type="Resource" id="Resource_l87he"]
+script = ExtResource("2_nphgc")
+maximum = 20
+current = 20
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dp1uv"]
+size = Vector3(1.44, 1.315, 1.505)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q3k7x"]
+size = Vector3(1.8, 1.8, 1.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hnbgb"]
+size = Vector3(6.41, 3.1, 9.795)
+
+[node name="EnemyFrog" type="CharacterBody3D"]
+script = ExtResource("1_ve05x")
+health_pool = SubResource("Resource_l87he")
+
+[node name="fog" parent="." instance=ExtResource("1_04bwi")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.644003, 0)
+shape = SubResource("BoxShape3D_dp1uv")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+script = ExtResource("2_8rj1d")
+
+[node name="HurtboxCollision" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.817305, 0)
+shape = SubResource("BoxShape3D_q3k7x")
+
+[node name="Sightline" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.68903)
+
+[node name="SightlineArea" type="CollisionShape3D" parent="Sightline"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.799267, 3.62502)
+shape = SubResource("BoxShape3D_hnbgb")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[connection signal="area_entered" from="Sightline" to="." method="_on_sightline_area_entered"]

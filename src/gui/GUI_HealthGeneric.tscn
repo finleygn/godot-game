@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc4c6d4o6krma"]
+
+[ext_resource type="Script" path="res://src/gui/GUI_HealthPlayer.gd" id="1_edit0"]
+
+[node name="HealthPlayer" type="ColorRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -231.0
+offset_top = -19.0
+offset_right = 231.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.992805, 0.621981)
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_edit0")
+
+[node name="HealthBar" type="ColorRect" parent="."]
+layout_mode = 2
+offset_left = 3.0
+offset_top = 5.0
+offset_right = 459.0
+offset_bottom = 34.0
+color = Color(0.737255, 0.196078, 0.305882, 1)
