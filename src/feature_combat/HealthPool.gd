@@ -7,6 +7,9 @@ extends Resource
 signal health_exhausted();
 signal health_changed(value: int, previous: int);
 
+func get_percent():
+	return float(current) / float(maximum);
+
 func lose_heath(amount):
 	update_health(max(0, current - amount))
 
@@ -18,7 +21,7 @@ func update_health(health):
 	current = health;
 	
 	# health did change
-	if temp_current != health:
+	if temp_current != current:
 		health_changed.emit(current, temp_current)
 	
 	if current == 0:

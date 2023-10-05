@@ -1,7 +1,7 @@
 extends Resource
 class_name Inventory
 
-var Fungible = preload("res://src/resource_type/Fungible.gd");
+var Fungible = preload("res://src/feature_inventory/Fungible.gd");
 
 @export var gold_account: Fungible;
 @export var wood_account: Fungible;

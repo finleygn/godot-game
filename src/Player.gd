@@ -7,8 +7,8 @@ const ATTACK_TIMER = 0.1;
 @onready var node_hit_box = $HitBox
 
 @export var speed = 14
-@export var inventory: Inventory;
-@export var health_pool: HealthPool;
+@export var inventory: Inventory  = Inventory.new();
+@export var health_pool: HealthPool= HealthPool.new();
 
 var velocity_modifier = 0
 var current_direction = Vector3.FORWARD
@@ -22,10 +22,6 @@ func _ready():
 	$DebugOverlay.draw.add_vector(self, "velocity", 1, 4, Color(1.0,0.0,1.0, 0.4))
 	node_hit_box.disable();
 	node_attack_timer.timeout.connect(_on_attack_timer_ended);
-
-func _input(event):
-	if event.is_action_pressed('attack'):
-		health_pool.lose_heath(10);
 
 func _physics_process(delta):
 	look_at_mouse();

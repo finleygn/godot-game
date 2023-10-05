@@ -1,10 +1,10 @@
-[gd_scene load_steps=45 format=3 uid="uid://ng10cmg1tgma"]
+[gd_scene load_steps=44 format=3 uid="uid://ng10cmg1tgma"]
 
 [ext_resource type="PackedScene" uid="uid://kf2txuvh28ld" path="res://scenes/player.tscn" id="1_a1avi"]
 [ext_resource type="Script" path="res://src/Main.gd" id="1_f5uec"]
 [ext_resource type="Script" path="res://src/follow.gd" id="2_n2my7"]
-[ext_resource type="Resource" uid="uid://de7f78gyh20df" path="res://state/inventory/Inventory.tres" id="3_e33ou"]
-[ext_resource type="Script" path="res://src/feature_combat/HealthPool.gd" id="3_sqfc6"]
+[ext_resource type="Resource" uid="uid://de7f78gyh20df" path="res://state/inventory/Inventory.tres" id="4_c44pm"]
+[ext_resource type="Resource" uid="uid://1k22u7blan7y" path="res://state/PlayerHealthPool.tres" id="4_k5ueq"]
 [ext_resource type="PackedScene" uid="uid://lxk5410rvfdu" path="res://src/gui/GUI_Inventory.tscn" id="8_smw6f"]
 [ext_resource type="PackedScene" uid="uid://cu0xxy2gyb6vh" path="res://src/gui/GUI_HealthPlayer.tscn" id="8_v5m5u"]
 [ext_resource type="Script" path="res://src/MapBuilder.gd" id="10_vq4n4"]
@@ -16,11 +16,6 @@
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="16_oi8pk"]
 [ext_resource type="Shader" path="res://shaders/cel-shader-base.gdshader" id="17_i8dq3"]
 [ext_resource type="PackedScene" uid="uid://diau0y74foed6" path="res://scenes/mobs/EnemyFrog.tscn" id="17_wpxmg"]
-
-[sub_resource type="Resource" id="Resource_hhb7e"]
-script = ExtResource("3_sqfc6")
-maximum = 100
-current = 100
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_cofdi"]
 exposure_multiplier = 2.0
@@ -390,8 +385,8 @@ script = ExtResource("1_f5uec")
 [node name="Player" parent="." instance=ExtResource("1_a1avi")]
 transform = Transform3D(1, 0.000169275, 0.000318609, -0.000169373, 1, 0.000245365, -0.000318557, -0.000245433, 1, 0.0363326, -0.435821, 0.0191345)
 speed = 8
-inventory = ExtResource("3_e33ou")
-health_pool = SubResource("Resource_hhb7e")
+inventory = ExtResource("4_c44pm")
+health_pool = ExtResource("4_k5ueq")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, -1.74846e-07, 4.86356e-13, 1.0385e-07, 0.593953, 0.8045, -1.40664e-07, -0.8045, 0.593953, 0, 9.67111, -6.24626)

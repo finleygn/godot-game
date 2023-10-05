@@ -1,10 +1,12 @@
 class_name EnemyFrog
 extends CharacterBody3D
 
-@export var health_pool: HealthPool;
 @export var movement_speed: float = 4.0;
+@export var health_pool: HealthPool;
 
-@onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
+@onready var animation_player = $fog/AnimationPlayer;
+@onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D;
+@onready var floating_health_bar = $FloatingHealthBar;
 
 const AGGRO_RANGE = 10.0;
 const JUMP_INTERVAL = 0.2;
@@ -26,10 +28,10 @@ var queued_jump = false;
 func _ready():
 	navigation_agent.path_desired_distance = 0.5
 	navigation_agent.target_desired_distance = 0.5
-
-	$fog/AnimationPlayer.animation_finished.connect(_on_animation_finished);
-
-	move_and_slide()
+	
+	floating_health_bar.set_health_pool(health_pool)
+	health_pool.health_exhausted.connect(_on_health_pool_health_exhausted);
+	animation_player.animation_finished.connect(_on_animation_finished);
 
 func queue_jump() -> void:
 	if !queued_jump:
@@ -48,7 +50,7 @@ func transition_to_wandering():
 func transition_to_jumping() -> void:
 	current_state = ENEMY_STATES.JUMPING;
 	queued_jump = null;
-	$fog/AnimationPlayer.play("Walk");
+	animation_player.play("Walk");
 
 func _on_animation_finished(animation_name):
 	if(animation_name == "Walk"):
@@ -58,7 +60,7 @@ func _on_sightline_area_entered(entered_entity):
 	if entered_entity.owner is Player:
 		transition_to_aggro(entered_entity.owner)
 
-func _physics_process(delta):	
+func _physics_process(delta):
 	if current_state == ENEMY_STATES.AGGRO && target:
 		if target.position.distance_to(position) < AGGRO_RANGE:
 			navigation_agent.set_target_position(target.position);
@@ -80,3 +82,12 @@ func _physics_process(delta):
 		move_and_slide()
 	else:
 		velocity = Vector3.ZERO
+
+func _on_hurt_box_hurt_register(attacking_entity):
+	if(attacking_entity is Player):
+		health_pool.lose_heath(5);
+		transition_to_aggro(attacking_entity)
+
+
+func _on_health_pool_health_exhausted():
+	queue_free()

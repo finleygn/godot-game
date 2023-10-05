@@ -1,14 +1,11 @@
-class_name HitBox
+class_name InteractableArea
 extends Area3D
 
-signal hit_register(attacked_entity)
+func _ready() -> void:
+	area_entered.connect(_on_area_entered);
 
-func _init() -> void:
-	collision_layer = 2
-
-func on_hurtbox_collide(hurtbox: HurtBox) -> void:
-	print_debug(hurtbox.owner)
-	hit_register.emit(hurtbox.owner)
+func _on_area_entered(_area: Area3D) -> void:
+	pass;
 
 func enable():
 	for child in get_children():

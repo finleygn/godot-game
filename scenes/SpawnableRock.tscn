@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/SpawnableRock.gd" id="1_sob67"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_oa4et"]
 [ext_resource type="Shader" path="res://shaders/cel-shader-base.gdshader" id="3_v3unl"]
-[ext_resource type="Script" path="res://src/interaction/Hurtbox.gd" id="4_lrtly"]
+[ext_resource type="Script" path="res://src/feature_combat/areas/HurtBox.gd" id="4_lrtly"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t7bw7"]
 render_priority = 0

@@ -3,16 +3,16 @@
 [ext_resource type="Script" path="res://src/Player.gd" id="1_m5f8l"]
 [ext_resource type="PackedScene" uid="uid://sxqm3n75o516" path="res://scenes/mushroom_guy.tscn" id="2_kit35"]
 [ext_resource type="PackedScene" uid="uid://dfnfgc5uoqfpd" path="res://scenes/debug_overlay.tscn" id="3_cjh05"]
-[ext_resource type="Script" path="res://src/interaction/Hitbox.gd" id="4_hqv8o"]
+[ext_resource type="Script" path="res://src/feature_combat/areas/HitBox.gd" id="4_lp2ft"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ecbry"]
 radius = 1.0
 height = 3.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_tw5l2"]
-size = Vector3(1.585, 1.24, 1.585)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_lb51t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_efvik"]
+size = Vector3(2.3, 1.385, 3.41)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_m5f8l")
@@ -25,14 +25,6 @@ shape = SubResource("CapsuleShape3D_ecbry")
 
 [node name="PlayerModel" parent="." instance=ExtResource("2_kit35")]
 
-[node name="HitBox" type="Area3D" parent="."]
-script = ExtResource("4_hqv8o")
-
-[node name="AttackHitbox" type="CollisionShape3D" parent="HitBox"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.649518, -1.24509)
-shape = SubResource("BoxShape3D_tw5l2")
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
@@ -44,5 +36,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.086074, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.807384, 0)
 shape = SubResource("BoxShape3D_lb51t")
 
+[node name="HitBox" type="Area3D" parent="."]
+script = ExtResource("4_lp2ft")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59889, -1.05096)
+shape = SubResource("BoxShape3D_efvik")
+
 [connection signal="attack_animation_finished" from="PlayerModel" to="." method="_on_player_model_attack_animation_finished"]
-[connection signal="hit_register" from="HitBox" to="." method="_on_hit_box_hit_register"]

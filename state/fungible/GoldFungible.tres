@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Fungible" load_steps=3 format=3 uid="uid://ch4783df12h6c"]
 
-[ext_resource type="Script" path="res://src/resource_type/Fungible.gd" id="1_o1054"]
+[ext_resource type="Script" path="res://src/feature_inventory/Fungible.gd" id="1_0i050"]
 [ext_resource type="Texture2D" uid="uid://dg3r8met4v6f4" path="res://texture/gold.png" id="2_jwmpi"]
 
 [resource]
-script = ExtResource("1_o1054")
+script = ExtResource("1_0i050")
 name = "gold"
 quantity = 100
 texture = ExtResource("2_jwmpi")

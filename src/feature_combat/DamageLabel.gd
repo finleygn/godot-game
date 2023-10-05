@@ -33,6 +33,7 @@ func start():
 	
 	tween.parallel();
 	
+	
 	tween.tween_property(
 		self, 
 		"modulate", 

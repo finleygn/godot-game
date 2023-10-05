@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Fungible" load_steps=3 format=3 uid="uid://datrwtabe5gg2"]
 
-[ext_resource type="Script" path="res://src/resource_type/Fungible.gd" id="1_eb606"]
+[ext_resource type="Script" path="res://src/feature_inventory/Fungible.gd" id="1_eb606"]
 [ext_resource type="Texture2D" uid="uid://bt2y124oc0vnk" path="res://texture/stone.png" id="2_j5ix2"]
 
 [resource]

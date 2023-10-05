@@ -13,7 +13,7 @@ func set_health_pool(target_health_pool: HealthPool):
 	animated_health = float(health_pool.current);
 	target_health_pool.health_changed.connect(_on_health_pool_health_changed)
 
-func update_health_bar_size(delta):
+func update_health_bar_size(_delta):
 	animated_health = lerp(animated_health, float(health_pool.current), 0.05);
 	health_bar.scale.x = animated_health / float(health_pool.maximum);
 

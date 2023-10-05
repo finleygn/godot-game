@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://n1sqprlsy77n"]
+
+[ext_resource type="Script" path="res://scenes/HealthBar.gd" id="1_72kqp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gcdy4"]
+bg_color = Color(0.0470588, 0.0470588, 0.0470588, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8sgd0"]
+bg_color = Color(0.968627, 0, 0.0431373, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_krfbo"]
+viewport_path = NodePath("SubViewport")
+
+[node name="FloatingHealthBar" type="Node3D"]
+script = ExtResource("1_72kqp")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+
+[node name="HealthBar" type="ProgressBar" parent="SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -10.0
+offset_right = 100.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_gcdy4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8sgd0")
+value = 100.0
+show_percentage = false
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+double_sided = false
+texture = SubResource("ViewportTexture_krfbo")

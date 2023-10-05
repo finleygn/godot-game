@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cc4c6d4o6krma"]
+[gd_scene load_steps=2 format=3 uid="uid://l5kb20qxb40s"]
 
 [ext_resource type="Script" path="res://src/gui/GUI_HealthPlayer.gd" id="1_edit0"]
 
@@ -24,4 +24,4 @@ offset_left = 3.0
 offset_top = 5.0
 offset_right = 459.0
 offset_bottom = 34.0
-color = Color(0.737255, 0.196078, 0.305882, 1)
+color = Color(0.968179, 0, 0.0445807, 1)
